@@ -5,6 +5,7 @@ package com.example.spiffy.mybank;
  */
 public class BankAccount {
     private double balance;
+    public static final double OVERDRAFT_FEE = 30;
 
     public void withdraw(double amount){
         balance -= amount;
