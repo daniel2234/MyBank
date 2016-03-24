@@ -12,6 +12,7 @@
     tools:context="com.example.spiffy.mybank.MainActivity">
 
     <EditText
+        android:id="@+id/amount_input"
         android:gravity="center"
         android:hint="@string/amount_hint"
         android:layout_width="match_parent"
@@ -22,12 +23,14 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/withdraw_button"
             android:hint="@string/withdraw"
             android:layout_weight="50"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/deposit_button"
             android:hint="@string/deposit"
             android:layout_weight="50"
             android:layout_width="0dp"
@@ -35,6 +38,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/balance_display"
         android:textSize="32sp"
         android:text="@string/balance_amount"
         android:layout_width="wrap_content"
