@@ -13,23 +13,26 @@ public class MainActivity extends AppCompatActivity {
     Button withdrawButton;
     Button depositButton;
     TextView amountDisplay;
-
+    BankAccount currentAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       amountDisplay = (TextView)findViewById(R.id.balance_display);
-       depositButton = (Button) findViewById(R.id.deposit_button);
-       withdrawButton = (Button) findViewById(R.id.withdraw_button);
-       amountInput = (EditText)findViewById(R.id.amount_input);
+        currentAccount = new BankAccount();
 
-       withdrawButton.setOnClickListener(new View.OnClickListener() {
+        amountDisplay = (TextView)findViewById(R.id.balance_display);
+        depositButton = (Button) findViewById(R.id.deposit_button);
+        withdrawButton = (Button) findViewById(R.id.withdraw_button);
+        amountInput = (EditText)findViewById(R.id.amount_input);
+
+        withdrawButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                String amount = amountInput.getText().toString();
-               amountDisplay.setText(amount);
+               currentAccount.withdraw(Double.parseDouble(amount));
+               amountDisplay.setText("Balance is " +currentAccount.getBalance());
            }
        });
 
@@ -37,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String amount = amountInput.getText().toString();
-                amountDisplay.setText(amount);
+                currentAccount.deposit(Double.parseDouble(amount));
+                amountDisplay.setText("Balance is " + currentAccount.getBalance());
             }
         });
 
