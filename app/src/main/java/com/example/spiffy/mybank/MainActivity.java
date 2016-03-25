@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "Size is " +arrayList.size());
 
-        currentAccount = new BankAccount();
+        currentAccount = new BankAccount(BankAccount.Type.CHECKING);
 
         mAmountDisplay = (TextView)findViewById(R.id.balance_display);
         mDepositButton = (Button) findViewById(R.id.deposit_button);
