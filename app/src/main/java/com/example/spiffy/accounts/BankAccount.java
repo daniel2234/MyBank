@@ -1,4 +1,4 @@
-package com.example.spiffy.mybank;
+package com.example.spiffy.accounts;
 
 import java.util.ArrayList;
 
@@ -10,23 +10,11 @@ public class BankAccount {
     private ArrayList<Double> mTransactions;
     public static final double OVERDRAFT_FEE = 30;
 
-    public enum Type{
-        CHECKING, SAVINGS;
-    }
-
-    private Type mType;
-
-    BankAccount(Type accountType){
+    BankAccount(){
         mTransactions = new ArrayList<Double>();
-        mType = accountType;
     }
 
     public void withdraw(double amount){
-        if (mType == Type.SAVINGS){
-            if (numberOfWithdrawals()  >= 3){
-                return;
-            }
-        }
         mTransactions.add(-amount);
 
         if (getBalance() < 0){
@@ -34,7 +22,7 @@ public class BankAccount {
         }
     }
 
-    private int numberOfWithdrawals(){
+    protected int numberOfWithdrawals(){
         int count = 0;
         for (int i = 0; i < mTransactions.size(); i++){
             if (mTransactions.get(i) < 0){
