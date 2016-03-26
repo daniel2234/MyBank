@@ -22,11 +22,26 @@ public class BankAccount {
     }
 
     public void withdraw(double amount){
+        if (mType == Type.SAVINGS){
+            if (numberOfWithdrawals()  >= 3){
+                return;
+            }
+        }
         mTransactions.add(-amount);
 
         if (getBalance() < 0){
            mTransactions.add(-OVERDRAFT_FEE);
         }
+    }
+
+    private int numberOfWithdrawals(){
+        int count = 0;
+        for (int i = 0; i < mTransactions.size(); i++){
+            if (mTransactions.get(i) < 0){
+                count++;
+            }
+        }
+        return count;
     }
 
     public void deposit(double amount){
